@@ -36,7 +36,5 @@ Route::get('/dashboard', 'DashboardController@index')->middleware('auth');
 | Gallery Routes
 |--------------------------------------------------------------------------
 |*/
+Route::get('/gallery/{gallery}', 'GalleryController@show')->middleware('auth');
 
-Route::get('/', function () {
-    return view('welcome');
-});

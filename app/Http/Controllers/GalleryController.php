@@ -46,7 +46,7 @@ class GalleryController extends Controller
      */
     public function show(Gallery $gallery)
     {
-        //
+        return view('gallery.show', ['gallery' => $gallery]);
     }
 
     /**

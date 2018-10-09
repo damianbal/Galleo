@@ -1,6 +1,7 @@
 <?php 
 
-namespace App\Core;
+namespace App\Core\Relations;
+
 
 use App\GalleryImage;
 

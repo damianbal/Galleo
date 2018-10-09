@@ -3,7 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
-use App\Core\BelongsToGallery;
+use App\Core\Relations\BelongsToGallery;
 
 class GalleryImage extends Model
 {

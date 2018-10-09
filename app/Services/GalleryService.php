@@ -10,11 +10,6 @@ use Intervention\Image\Facades\Image;
 
 class GalleryService
 {
-    public function __construct()
-    {
-        //
-    }
-
     /**
      * Create empty gallery
      *
