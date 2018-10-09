@@ -2,10 +2,50 @@
 
 namespace App\Services;
 
+use App\User;
+use App\Gallery;
+use Illuminate\Support\Carbon;
+use Intervention\Image\Facades\Image;
+
+
 class GalleryService
 {
     public function __construct()
     {
         //
+    }
+
+    /**
+     * Create empty gallery
+     *
+     * @param string $title
+     * @param User $user
+     * @return int
+     */
+    public function createGallery(string $title, User $user)
+    {
+        $gallery = Gallery::create([
+            'title' => $title, 
+            'token' => md5(Carbon::now()->toDateTimeString()),
+            'user_id' => $user->id,
+        ]);
+
+        return $gallery;
+    }
+
+    /**
+     * Add image to gallery
+     *
+     * @param Gallery $gallery
+     * @param string $url
+     * @return integer
+     */
+    public function addImageToGallery(Gallery $gallery, $url)
+    {
+        // TODO: create thumb and set thumb_url
+
+        return $gallery->images()->create([
+            'url' => $url
+        ]);
     }
 }
