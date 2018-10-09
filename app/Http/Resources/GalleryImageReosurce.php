@@ -4,7 +4,7 @@ namespace App\Http\Resources;
 
 use Illuminate\Http\Resources\Json\JsonResource;
 
-class GalleryResource extends JsonResource
+class GalleryImageReosurce extends JsonResource
 {
     /**
      * Transform the resource into an array.
@@ -15,8 +15,11 @@ class GalleryResource extends JsonResource
     public function toArray($request)
     {
         return [
+            'url' => $this->url,
             'title' => $this->title,
-            'images' => GalleryImageReosurce::collection($this->images),
+            'description' => $this->description, 
+            'thumb_url' => $this->thumb_url,
+            'added_ago' => $this->created_at->diffForHumans(),
         ];
     }
 }

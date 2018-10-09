@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Gallery;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class GalleryController extends Controller
 {
@@ -80,6 +81,11 @@ class GalleryController extends Controller
      */
     public function destroy(Gallery $gallery)
     {
-        //
+        if(Auth::user()->can('delete', $gallery))
+        {
+            $gallery->delete();
+        }
+
+        return redirect()->route('dashboard')->with('message', 'Gallery has been removed!');
     }
 }

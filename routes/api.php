@@ -19,3 +19,4 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 
 // TODO: routes to access galleries and images
+Route::get('/gallery/{gallery}', 'API\\GalleryController@show');

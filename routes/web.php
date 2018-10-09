@@ -29,12 +29,13 @@ Route::get('/sign-in', 'AuthController@signIn')->middleware('guest');
 | Dashboard Routes
 |--------------------------------------------------------------------------
 |*/
-Route::get('/dashboard', 'DashboardController@index')->middleware('auth');
+Route::get('/dashboard', 'DashboardController@index')->middleware('auth')->name('dashboard');
 
 /*
 |--------------------------------------------------------------------------
 | Gallery Routes
 |--------------------------------------------------------------------------
 |*/
-Route::get('/gallery/{gallery}', 'GalleryController@show')->middleware('auth');
+Route::get('/gallery/{gallery}', 'GalleryController@show')->middleware('auth')->name('gallery.show');
+Route::delete('/gallery/{gallery}', 'GalleryController@delete')->middleware('auth')->name('gallery.delete');
 
