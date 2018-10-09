@@ -20,8 +20,8 @@ use Illuminate\Support\Facades\Auth;
 |*/
 Auth::routes();
 
-Route::get('/sign-up', 'AuthController@signUp');
-Route::get('/sign-in', 'AuthController@signIn');
+Route::get('/sign-up', 'AuthController@signUp')->middleware('guest')->name('login');
+Route::get('/sign-in', 'AuthController@signIn')->middleware('guest');
 
 
 /*
@@ -29,7 +29,7 @@ Route::get('/sign-in', 'AuthController@signIn');
 | Dashboard Routes
 |--------------------------------------------------------------------------
 |*/
-Route::get('/dashboard', 'DashboardController@index');
+Route::get('/dashboard', 'DashboardController@index')->middleware('auth');
 
 /*
 |--------------------------------------------------------------------------
