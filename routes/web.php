@@ -19,7 +19,6 @@ use Illuminate\Support\Facades\Auth;
 |--------------------------------------------------------------------------
 |*/
 Auth::routes();
-
 Route::get('/sign-up', 'AuthController@signUp')->middleware('guest')->name('login');
 Route::get('/sign-in', 'AuthController@signIn')->middleware('guest');
 
@@ -30,6 +29,7 @@ Route::get('/sign-in', 'AuthController@signIn')->middleware('guest');
 |--------------------------------------------------------------------------
 |*/
 Route::get('/dashboard', 'DashboardController@index')->middleware('auth')->name('dashboard');
+Route::get('/dashboard/how-to', 'DashboardController@howTo')->name('dashboard.how_to');
 
 /*
 |--------------------------------------------------------------------------
@@ -37,5 +37,6 @@ Route::get('/dashboard', 'DashboardController@index')->middleware('auth')->name(
 |--------------------------------------------------------------------------
 |*/
 Route::get('/gallery/{gallery}', 'GalleryController@show')->middleware('auth')->name('gallery.show');
-Route::delete('/gallery/{gallery}', 'GalleryController@delete')->middleware('auth')->name('gallery.delete');
-
+Route::post('/gallery', 'GalleryController@store')->middleware('auth')->name('gallery.store');
+Route::delete('/gallery/{gallery}', 'GalleryController@destroy')->middleware('auth')->name('gallery.delete');
+Route::post('/gallery/{gallery}/images', 'GalleryImagesController@store')->middleware('auth')->name('gallery.store_image');

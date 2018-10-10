@@ -20,7 +20,7 @@ class GalleryPolicy
         //
     }
 
-    public function view(User $user, Gallery $gallery)
+    public function show(User $user, Gallery $gallery)
     {
         return $user->id == $gallery->user_id;
     }

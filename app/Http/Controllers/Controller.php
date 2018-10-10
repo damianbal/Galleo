@@ -10,4 +10,9 @@ use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 class Controller extends BaseController
 {
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
+
+    public function redirectToDashboard($messages = [], $errors = [])
+    {
+        return redirect()->route('dashboard')->with('messages', $messages)->with('errors', $errors);
+    }
 }

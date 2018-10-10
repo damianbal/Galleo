@@ -15,4 +15,9 @@ class DashboardController extends Controller
             'galleries' => $userGalleries
         ]);
     }
+
+    public function howTo()
+    {
+        return view('dashboard.how_to');
+    }
 }

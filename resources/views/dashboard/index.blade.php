@@ -1,28 +1,36 @@
 @extends('layouts.master')
 
 @section('content')
-    <section id="dashboardTools" class="row">
-        <div class="col-sm-12 text-sm-right">
-    <form method="POST" action="/logout">
-        @csrf
-        <button class="btn btn-sm btn-warning">Sign out ({{ Auth::user()->name }})</button>
-    </form>
-        </div>
+
+    <section id="galleries" class="mb-3">
+        <article>
+            <header><h3>Galleries</h3></header> 
+            <main class="bg-white border rounded p-3">
+                @if(count($galleries) < 1) 
+                <div class="text-muted">You do not have any galleries!</div>
+                @endif
+
+                @foreach($galleries as $gallery)
+                <div class="row">
+                    <div class="col-sm-8">
+                        {{ $gallery->title }}
+                    </div>
+                    <div class="col-sm-4">
+                    <a class="btn btn-primary btn-sm" href="{{ route('gallery.show', [$gallery->id]) }}">Show</a>
+                    </div>
+                </div>
+                @endforeach
+            </main>
+        </article>
     </section>
 
-    <div class="row">
-        <div class="col-sm-3">
-            bla
-        </div>
-
-        <div class="col-sm-9">
-            @yield('dashboard_content', 'xd')
-        </div>
-    </div>
-
-   
-
-    
-
+        <section id="createGallery">
+        <article>
+            <header><h3>Create gallery</h3></header> 
+            <main>
+                @include('partials.create_gallery')
+            </main>
+        </article>
+    </section>
 
 @endsection

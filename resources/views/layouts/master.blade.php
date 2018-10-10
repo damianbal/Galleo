@@ -12,13 +12,37 @@
   </head>
   <body>
     <div class="container mt-3 bg-light p-3 border rounded shadow-sm">
+        @auth
+        <section class="row" id="userSection">
+                    <article class="col-sm-12 text-sm-right">
+                            <form method="POST" action="/logout">
+                @csrf
+                <button class="btn btn-sm btn-warning">Sign out ({{ Auth::user()->name }})</button>
+            </form>
+            </article>
+        </section>
+
+        @endauth
         <section class="row" id="errors">
              <article class="col-sm-12">
                 @include('partials.errors')
              </article>
         </section>
+        <section class="row" id="messages">
+             <article class="col-sm-12">
+                @include('partials.messages')
+             </article>
+        </section>
         <section class="row" id="mainContent">
-            <article class="col-sm-12">
+                    <div class="col-sm-3">
+            <div class="list-group">
+  <a href="{{ route('dashboard') }}" class="list-group-item list-group-item-action">
+    Dashboard
+  </a>
+<a href="{{ route('dashboard.how_to') }}" class="list-group-item list-group-item-action">How to</a>
+</div>
+        </div>
+            <article class="col-sm-9">
                 @yield('content')
             </article>
         </section>
