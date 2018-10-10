@@ -35,7 +35,7 @@ class GalleryService
      * @param string $url
      * @return integer
      */
-    public function addImageToGallery(Gallery $gallery, $url, $title = 'Image', 
+    public function addImageToGallery(Gallery $gallery, $url = 'images/default.png', $title = 'Image', 
                                         $desc = '')
     {
         // TODO: create thumb and set thumb_url
@@ -43,6 +43,7 @@ class GalleryService
         return $gallery->images()->create([
             'url' => $url,
             'title' => $title,
+            'thumb_url' => '...',
             'description' => $desc,
         ]);
     }

@@ -14,5 +14,15 @@
             Example: <code>/api/galleries/321?token=XXX</code>
         </main>
     </article>
+    
+        <article>
+        <header>
+            <h3>Access user galleries</h3> 
+        </header>
+        <main class="p-2">
+            You can access user galleries by sending get request to <code>/api/user/ID/galleries</code> 
+        </main>
+    </article>
+    
 </section>
 @endsection

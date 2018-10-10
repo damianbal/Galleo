@@ -5,7 +5,7 @@
     <section id="galleries" class="mb-3">
         <article>
             <header><h3>Galleries</h3></header> 
-            <main class="bg-white border rounded p-3">
+            <div class="bg-white border rounded p-3">
                 @if(count($galleries) < 1) 
                 <div class="text-muted">You do not have any galleries!</div>
                 @endif
@@ -20,7 +20,7 @@
                     </div>
                 </div>
                 @endforeach
-            </main>
+            </div>
         </article>
     </section>
 
