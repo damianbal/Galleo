@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\GalleryImage;
 use Illuminate\Http\Request;
 use App\Gallery;
+use Illuminate\Support\Facades\Auth;
 
 class GalleryImageController extends Controller
 {
@@ -36,7 +37,7 @@ class GalleryImageController extends Controller
      * @param  \App\GalleryImage  $galleryImage
      * @return \Illuminate\Http\Response
      */
-    public function edit(GalleryImage $galleryImage)
+    public function edit(GalleryImage $image)
     {
         //
     }
@@ -59,8 +60,17 @@ class GalleryImageController extends Controller
      * @param  \App\GalleryImage  $galleryImage
      * @return \Illuminate\Http\Response
      */
-    public function destroy(GalleryImage $galleryImage)
+    public function destroy(GalleryImage $image)
     {
-        //
+        // check if user can remove gallery which this image belongs to
+        // if can then it means that can remove image as well
+        if(!Auth::user()->can('delete', $image->gallery))
+        {
+            return $this->redirectToDashboard();
+        }
+
+        $image->delete();
+
+        return back()->with('messages', ['Image has been removed!']);
     }
 }

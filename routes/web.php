@@ -40,3 +40,4 @@ Route::get('/gallery/{gallery}', 'GalleryController@show')->middleware('auth')->
 Route::post('/gallery', 'GalleryController@store')->middleware('auth')->name('gallery.store');
 Route::delete('/gallery/{gallery}', 'GalleryController@destroy')->middleware('auth')->name('gallery.delete');
 Route::post('/gallery/{gallery}/images', 'GalleryImagesController@store')->middleware('auth')->name('gallery.store_image');
+Route::delete('/image/{image}', 'GalleryImageController@destroy')->middleware('auth')->name('image.delete');
