@@ -5,7 +5,7 @@ namespace App\Services;
 use App\User;
 use App\Gallery;
 use Illuminate\Support\Carbon;
-use Intervention\Image\Facades\Image as Image;
+use Intervention\Image\Facades\Image;
 
 
 class GalleryService
@@ -36,15 +36,12 @@ class GalleryService
      * @return integer
      */
     public function addImageToGallery(Gallery $gallery, $url = 'images/default.png', $title = 'Image', 
-                                        $desc = '')
+                                        $desc = '', $thumb_url = '')
     {
-        // TODO: create thumb and set thumb_url
-        
-
         return $gallery->images()->create([
             'url' => $url,
             'title' => $title,
-            'thumb_url' => '...',
+            'thumb_url' => $thumb_url,
             'description' => $desc,
         ]);
     }

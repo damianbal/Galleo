@@ -13,6 +13,8 @@ use Illuminate\Support\Facades\Auth;
 |
 */
 
+Route::redirect('/', '/dashboard');
+
 /*
 |--------------------------------------------------------------------------
 | Auth Routes

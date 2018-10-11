@@ -19,7 +19,7 @@ class GalleryImageResource extends JsonResource
             'url' => url('/') . Storage::url( $this->url ),
             'title' => $this->title,
             'description' => $this->description, 
-            'thumb_url' => $this->thumb_url,
+            'thumb_url' => url('/') . Storage::url($this->thumb_url),
             'added_ago' => $this->created_at->diffForHumans(),
         ];
     }

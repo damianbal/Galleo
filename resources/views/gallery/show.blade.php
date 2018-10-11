@@ -14,8 +14,8 @@
         @foreach($gallery->images as $img)
             <div class="col-sm-3 mt-3">
                            <div>{{ $img->title }}</div>
-            <div><img class="img-fluid rounded shadow-sm" src="{{ Storage::url($img->url) }}"></div>
-     
+            <div><img class="img-fluid rounded shadow-sm" src="{{ Storage::url($img->thumb_url) }}"></div>
+            <div><a href="{{ Storage::url($img->url) }}">See Full Res</a></div>
                 <div class="text-muted small">{{ $img->description }}</div>
                 <div>
                 <form method="POST" action="{{ route('image.delete', $img->id) }}">
