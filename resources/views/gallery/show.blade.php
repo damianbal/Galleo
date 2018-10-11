@@ -31,6 +31,8 @@
 
     <section>
         <header><h4>Add image</h4></header>
+        
+        @include('partials.add_image_to_gallery', ['galleryId' => $gallery->id])
     </section>
 
     <section class="text-sm-right">

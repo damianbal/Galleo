@@ -5,7 +5,7 @@ namespace App\Services;
 use App\User;
 use App\Gallery;
 use Illuminate\Support\Carbon;
-use Intervention\Image\Facades\Image;
+use Intervention\Image\Facades\Image as Image;
 
 
 class GalleryService
@@ -39,6 +39,7 @@ class GalleryService
                                         $desc = '')
     {
         // TODO: create thumb and set thumb_url
+        
 
         return $gallery->images()->create([
             'url' => $url,
