@@ -8,6 +8,7 @@ use App\Services\GalleryService;
 use Illuminate\Support\Facades\Auth;
 use Intervention\Image\Facades\Image;
 use Illuminate\Support\Facades\Storage;
+use App\Services\ImageService;
 
 /**
  * Controller responsible for string images in Gallery
@@ -19,9 +20,16 @@ class GalleryImagesController extends Controller
      */
     protected $galleryService = null;
 
-    public function __construct(GalleryService $galleryService)
+    /**
+     * @var ImageService
+     */
+    protected $imageService = null;
+
+    public function __construct(GalleryService $galleryService,
+                                ImageService $imageService)
     {
         $this->galleryService = $galleryService;
+        $this->imageService = $imageService;
     }
 
     public function store(StoreImageRequest $request, Gallery $gallery)
@@ -30,22 +38,20 @@ class GalleryImagesController extends Controller
             return $this->redirectToDashboard([], ['You can not upload image to that gallery!']);
         }
 
+
         // store file
         $file = $request->file('image');
         $path = $file->store('public/images');
 
-        // generate thumbnail and store it
-        $image = Image::make($file);
-        $image->resize(320, 240);
-        $filePath = $file->hashName('public/thumbs');
-        Storage::put($filePath, (string) $image->encode());
+        // generate thumbnail 
+        $thumbPath = $this->imageService->generateThumb($file);
 
         // add image to gallery
         $this->galleryService->addImageToGallery($gallery,
             $path,
             $request->get('title') ?? 'Image',
             $request->get('desc') ?? 'Description', 
-            $filePath);
+            $thumbPath);
 
         return redirect()->route('gallery.show', $gallery->id);
     }

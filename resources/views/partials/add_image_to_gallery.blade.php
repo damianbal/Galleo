@@ -17,5 +17,5 @@
         </div>
     </div>
 
-    <button type="submit" class="btn btn-primary">Add</button>
+    <button type="submit" class="btn btn-primary"><i class="fas fa-plus"></i> Add</button>
 </form>

@@ -13,3 +13,4 @@ yarn-error.log
 .env
 .phpunit.result.cache
 storage/.DS_Store
+.DS_Store

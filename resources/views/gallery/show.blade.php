@@ -15,13 +15,14 @@
             <div class="col-sm-3 mt-3">
                            <div>{{ $img->title }}</div>
             <div><img class="img-fluid rounded shadow-sm" src="{{ Storage::url($img->thumb_url) }}"></div>
-            <div><a href="{{ Storage::url($img->url) }}">See Full Res</a></div>
-                <div class="text-muted small">{{ $img->description }}</div>
+                          <div class="text-muted small">{{ $img->description }}</div>
+            <div><a class="btn btn-sm btn-block btn-outline-dark mt-2" href="{{ Storage::url($img->url) }}"><i class="fas fa-expand-arrows-alt"></i> Full Res</a></div>
+  
                 <div>
                 <form method="POST" action="{{ route('image.delete', $img->id) }}">
                     @method('DELETE')
                     @csrf 
-                    <button class="btn btn-sm btn-danger">Remove</button>
+                    <button class="btn btn-sm btn-block btn-outline-danger"><i class="far fa-trash-alt"></i> Remove</button>
                 </form>
                 </div>
             </div>
@@ -39,7 +40,7 @@
             <form method="POST" action="{{ route('gallery.delete', $gallery->id) }}">
                 @csrf
                 @method('DELETE')
-                <button class="btn btn-danger">Delete Gallery</button> 
+                <button class="btn btn-danger"><i class="far fa-trash-alt"></i> Delete Gallery</button> 
             </form>
     </section>
 @endsection

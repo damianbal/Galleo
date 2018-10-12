@@ -25,8 +25,8 @@ class StoreImageRequest extends FormRequest
     {
         return [
             'image' => 'required|image',
-            'title' => 'min:3|string',
-            'description' => 'min:3|string'
+            'title' => 'nullable|min:3|string',
+            'description' => 'nullable|min:3|string'
         ];
     }
 }

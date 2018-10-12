@@ -20,7 +20,7 @@ class CreateGalleryImagesTable extends Migration
             $table->string('description')->string('...');
             $table->string('url');
             $table->string('thumb_url')->nullable();
-            $table->foreign('gallery_id')->references('id')->on('galleries');
+            $table->foreign('gallery_id')->references('id')->on('galleries')->onDelete('cascade');
             $table->timestamps();
         });
     }

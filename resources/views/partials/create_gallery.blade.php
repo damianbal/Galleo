@@ -8,7 +8,7 @@
         </div>
 
         <div class="col-sm-2">
-            <button class="btn btn-primary btn-block">Create</button>
+            <button class="btn btn-primary btn-block"><i class="fas fa-plus"></i> Create</button>
         </div>
     </div>
 </form>

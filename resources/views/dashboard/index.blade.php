@@ -16,7 +16,7 @@
                         {{ $gallery->title }}
                     </div>
                     <div class="col-sm-4">
-                    <a class="btn btn-primary btn-sm" href="{{ route('gallery.show', [$gallery->id]) }}">Show</a>
+                    <a class="btn btn-primary btn-sm" href="{{ route('gallery.show', [$gallery->id]) }}"><i class="fas fa-search"></i> Show</a>
                     </div>
                 </div>
                 @endforeach
